@@ -1,9 +1,39 @@
 #SLOAN HELPED ME WITH THIS ASSIGNMENT THERE MAY BE SOME SIMILARITIES
+class User:
+    def __init__(self, name, email):
+        self.name = name
+        self.email = email
+        self.account = BankAccount(int_rate=0.02, balance=0)
+    
+    # other methods
+    
+    def make_deposit(self, amount):
+        self.account.deposit(amount)
+        return self
+
+    # Add a make_withdrawal method to the User class 
+    # that calls on it's bank account's instance methods.
+    def make_withdrawal(self, amount):
+        self.account.withdraw(amount)
+        return self
+
+
+    # Add a display_user_balance method to the User class 
+    # that displays user's account balance
+    def display_user_balance(self):
+        print(self.name)
+        self.account.display_account_info()
+        return self
+
+
+
+
 class BankAccount:
-    # don't forget to add some default values for these parameters!
+    accounts = []
     def __init__(self, int_rate, balance): 
         self.int_rate = int_rate
         self.balance = balance
+        BankAccount.accounts.append(self)
         # (remember, instance attributes go here)
         
     def deposit(self, amount):
@@ -27,8 +57,14 @@ class BankAccount:
         self.balance = (self.balance * int_rate) + self.balance
         return self
         
-Jasleen = BankAccount(0.01, 10000)
-Jasleen.deposit(2000).deposit(100).deposit(300).withdraw(500).display_account_info()
+    @classmethod
+    def print_all_accounts(cls):
+        for accounts in cls.accounts:
+            account.display_account_info()
 
-Kaur = BankAccount(0.02, 50000)
-Kaur.deposit(100).deposit(7000).withdraw(200).withdraw(700).withdraw(2000).withdraw(900).display_account_info()
+
+user_1 = User("Jasleen" , " jkaur@gmail.com")
+user_1.make_deposit(2000).make_deposit(500).display_user_balance()
+
+user_2 = User("Kaur" , "kaurj@gmail.com")
+user_2.make_deposit(10000).display_user_balance().make_withdrawal(500).display_user_balance()
