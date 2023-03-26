@@ -11,15 +11,13 @@ class User:
         self.account.deposit(amount)
         return self
 
-    # Add a make_withdrawal method to the User class 
-    # that calls on it's bank account's instance methods.
+    #calls on bank account's instance methods
     def make_withdrawal(self, amount):
         self.account.withdraw(amount)
         return self
 
 
-    # Add a display_user_balance method to the User class 
-    # that displays user's account balance
+    #displays user's account balance
     def display_user_balance(self):
         print(self.name)
         self.account.display_account_info()
@@ -57,11 +55,7 @@ class BankAccount:
         self.balance = (self.balance * int_rate) + self.balance
         return self
         
-    @classmethod
-    def print_all_accounts(cls):
-        for accounts in cls.accounts:
-            account.display_account_info()
-
+    
 
 user_1 = User("Jasleen" , " jkaur@gmail.com")
 user_1.make_deposit(2000).make_deposit(500).display_user_balance()
