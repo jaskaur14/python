@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header" style="display: flex; margin: 2px;">
+            <h1>Add a recipe</h1>
+            <a href="/recipes">back to recipes</a>
+            <a href="/logout">logout</a>
+        </div>
+        {% with messages = get_flashed_messages() %}<!-- declare a variable called messages -->
+            {% if messages %}<!-- check if there are any messages -->
+            <div id="popup">
+                {% for message in messages %}<!-- loop through the messages -->
+                    <p>{{message}}</p><!-- display each message in a paragraph tag -->
+                {% endfor %}
+                <button onclick="popup.remove()">Okay</button>
+            </div>
+            {% endif %}
+        {% endwith %}
+        <div class="content">
+            <form action="/recipes/create", method="post">
+                <div class="col-1" style="display: flex; flex: 1; flex-direction: column;">
+                    <label>Name:
+                        <input type="text" name="name">
+                    </label>
+                    <label>
+                        Description:
+                        <textarea name="description" cols="30" rows="10"></textarea>
+                    </label>
+                    <label>
+                        Instructions:
+                        <textarea name="instructions" cols="30" rows="10"></textarea>
+                    </label>
+                </div>
+                <div class="col-2" style="display: flex; flex: 2; flex-direction: column;">
+                    <label>
+                        Date Made:
+                        <input type="date" name="date_made">
+                    </label>
+                    <label>
+                        Under 30 Minutes?
+                        <input type="radio" name="under30" value="1">
+                        <label for="1">yes</label>
+                        <input type="radio" name="under30" value="0">
+                        <label for="0">no</label>
+                    </label>
+                    <label>
+                        <input type="hidden" name="user_id" value="{{session.user_id}}">
+                    </label>
+                </div>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

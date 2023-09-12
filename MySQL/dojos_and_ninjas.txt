@@ -1,0 +1,30 @@
+INSERT INTO dojos (name)
+VALUES ("California"), ("New York"), ("Atlanta");
+
+SET SQL_SAFE_UPDATES = 0;
+-- 0 is equivalent to false 
+DELETE FROM dojos;
+
+INSERT INTO dojos (name)
+VALUES ("California"), ("New York"), ("Atlanta");
+
+SELECT * FROM dojos;
+
+INSERT INTO ninjas (first_name, last_name, age, dojo_id)
+VALUES ("Jasleen", "Kaur", 23, 28), ("Brad", "Pitt", 60, 28), ("Tom", "Holland", 27, 28);
+
+INSERT INTO ninjas (first_name, last_name, age, dojo_id)
+VALUES ("Morgan", "Kim", 53, 29), ("Amber", "Smith", 42, 29), ("Helen", "Brown", 87, 29);
+
+
+INSERT INTO ninjas (first_name, last_name, age, dojo_id)
+VALUES ("Ester", "Lee", 19, 30), ("Angela", "Prim", 75, 30), ("John", "Stevens", 33, 30);
+
+SELECT * FROM ninjas
+WHERE dojo_id = 28;
+
+SELECT * FROM ninjas
+WHERE dojo_id = 29;
+
+SELECT dojo_id FROM ninjas
+WHERE first_name = "John";

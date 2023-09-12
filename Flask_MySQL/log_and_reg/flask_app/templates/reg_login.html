@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="row">
+        <form action="/create/user" method="post">
+            <div class="col-1">
+                <h2>Register</h2>
+                <div>
+                    <label>
+                        First Name: <input type="text" name="first_name">
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Last Name: <input type="text" name="last_name">
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Email: <input type="email" name="email">
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Password: <input type="password" name="password">
+                    </label>
+                </div>
+                <div>
+                    <input type="submit" value="Register">
+                </div>
+            </div>
+        </form>
+            <div class="col-2">
+                <h2>Login</h2>
+                <form action="/login" method="post">
+                    <div>
+                        <label>
+                            Email: <input type="email" name="email">
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            Password: <input type="password" name="password">
+                        </label>
+                    </div>
+                    <div>
+                        <input type="submit" value="Login">
+                    </div>
+                </form>
+            </div>
+        {% with messages = get_flashed_messages() %}<!-- declare a variable called messages -->
+            {% if messages %}<!-- check if there are any messages -->
+            <div id="popup">
+                {% for message in messages %}<!-- loop through the messages -->
+                    <p>{{message}}</p><!-- display each message in a paragraph tag -->
+                {% endfor %}
+                <button onclick="popup.remove()">Okay</button>
+            </div>
+            {% endif %}
+        {% endwith %}
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="header" style="display: flex; justify-content: space-between;">
+        <h1>Sasquatch Websighting</h1>
+        <h2>{{session['user_name']}}</h2>
+    </div>
+    <div class="links" style="display: flex; justify-content: end;">
+        <a href="/dashboard" style="margin-right: 10px;">Dashboard</a>
+        <a href="/logout">Logout</a>
+    </div>
+    {% with messages = get_flashed_messages() %}<!-- declare a variable called messages -->
+        {% if messages %}<!-- check if there are any messages -->
+            <div id="popup">
+            {% for message in messages %}<!-- loop through the messages -->
+                <p>{{message}}</p><!-- display each message in a paragraph tag -->
+            {% endfor %}
+            <button onclick="popup.remove()">Okay</button>
+            </div>
+        {% endif %}
+    {% endwith %}
+    <div>
+        <h2>Report a Sighting</h2>
+    </div>
+    <div class="info">
+        <form action="/create/sighting" method="post">
+            <div class="col-1" style="display: flex; flex: 1; flex-direction: column;">
+                <label>Location:
+                    <input type="text" name="location">
+                </label>
+                <label>What Happened:
+                    <textarea name="what_happened" cols="30" rows="10"></textarea>
+                </label>
+            </div>
+            <div class="col-2" style="display: flex; flex: 2; flex-direction: column;">
+                <label>Date of Sighting:
+                    <input type="date" name="date_seen">
+                </label>
+                <label># of Sasquatches
+                    <input type="number" name="num_of_sasquatches" min="1">
+                </label>
+                <label>
+                    <input type="hidden" name="user_id" value="{{session.user_id}}">
+                </label>
+            </div>
+            <input type="submit" value="Report">
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+h1{
+    padding: 10px;
+    margin: 10px 0px;
+}
+
+table{
+    border-collapse: collapse;
+}
+
+td{
+    width: 60px;
+    height: 60px;
+}

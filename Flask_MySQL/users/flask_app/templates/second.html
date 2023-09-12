@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Here are our users!!!</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Created At</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <!-- renders all the data that is inputted on first page -->
+            <tr>
+                <td>{{ user.first_name }}</td>
+                <td>{{ user.last_name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.created_at }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/user/new">Add a User</a>
+    <!-- this link will redirect us back to the form page because of /user/new -->
+</body>
+</html>

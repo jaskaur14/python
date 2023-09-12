@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style2.css') }}">
+    <title>Document</title>
+</head>
+<body>
+    <h1>New Ninja</h1>
+    <div class="row">
+        <form action="/create/add" method="post">
+            <label for="">Dojo</label>
+                <select name="dojo_id">
+                    {% for dojo in dojos %}
+                        <option value={{dojo.id}}>{{dojo.name}}</option>
+                    {% endfor %}
+                <!-- Need to create an option list for the user to select a dojo. -->
+                <!-- Note that we are passing the dojo id into the value -->
+                <!-- <option value="28">California</option>
+                <option value="29">New York</option> -->
+                </select>
+                <div class="row">
+                    <input type="hidden" name="id" value="{{dojo_id}}">
+                    <label>
+                        First Name:
+                        <input type="text" name="first_name">
+                    </label>
+                </div>
+                <div class="row">
+                    <label>
+                        Last Name:
+                        <input type="text" name="last_name">
+                    </label>
+                </div>
+                <div class="row">
+                    <label>
+                        Age:
+                        <input type="text" name="age">
+                    </label>
+                </div>
+                <div>
+                    <input type="submit" value="Add Ninja">
+                </div>
+        </form>
+        <a href="/dojos">Home</a>
+    </div>
+        
+</body>
+</html>

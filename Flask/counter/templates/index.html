@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <h1 style="text-align: center;">Counter</h1>
+    <p style="text-align: center;">{{session['count']}} times</p>
+    <!-- counts each time you click on click box -->
+    <div style="display: flex; justify-content: space-evenly;">
+        <a href="/" style="background-color: aqua; text-decoration: none; border: 2px solid grey; color: black;" >Click</a>
+        <!-- havent learned bootstrap properly yet so im using inline styling to make it look nice -->
+        <!-- cant use button so we use a tag instead -->
+    </div>
+</body>
+</html>
+<!-- <h1>Counter</h1>
+<div>
+    <input type="submit" value="Click" href="/">
+    {{session['count']}} time(s)
+</div>
+this code made it so that every refresh would up the count but not when i clicked the button -->
